@@ -33,7 +33,7 @@ class StudentController extends Controller
         Student::create($request->all());
 
         return redirect()->route('students.index')
-            ->with('success', 'Étudiant ajouté');
+            ->with('success', 'Étudiant ajouté avec success');
     }
 
     // Form modification
