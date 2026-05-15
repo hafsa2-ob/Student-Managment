@@ -6,7 +6,6 @@
     <a href="{{ route('students.create') }}" class="btn btn-primary mb-3">
         Add an étudiant
     </a>
-
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}

@@ -24,9 +24,9 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:3|max:20',
             'email' => 'required|email',
-            'phone' => 'required',
+            'phone' => 'required|numeric',
             'age' => 'required|integer'
         ]);
 
@@ -46,16 +46,16 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:3|max:20',
             'email' => 'required|email',
-            'phone' => 'required',
+            'phone' => 'required|numeric',
             'age' => 'required|integer'
         ]);
 
         $student->update($request->all());
 
         return redirect()->route('students.index')
-            ->with('success', 'Étudiant modifié');
+            ->with('success', 'Étudiant a été modifié');
     }
 
     // Delete
@@ -64,6 +64,6 @@ class StudentController extends Controller
         $student->delete();
 
         return redirect()->route('students.index')
-            ->with('success', 'Étudiant supprimé');
+            ->with('success', 'Étudiant a été supprimé');
     }
 }
